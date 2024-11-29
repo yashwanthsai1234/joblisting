@@ -1,18 +1,15 @@
 const express = require('express');
+
 const app = express();
-
-// Import the job routes (adjust the path as needed)
 const jobRoutes = require('./routes/jobRoutes'); 
+const PORT = 3000;
 
-// Middleware to parse JSON (optional but recommended)
+// Middleware to parse JSON
 app.use(express.json());
 
-// Register the route for jobs under the `/jobs` endpoint
-app.use('/api', jobRoutes);
+// Use job routes
+app.use('/', jobRoutes);
 
-// Start the server
-const PORT = process.env.PORT || 3000; // Default to port 3000 if not specified
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
-
